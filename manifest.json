@@ -1,0 +1,59 @@
+{
+	"display_information": {
+			"name": "Zork",
+			"description": "You are likely to be eaten by a grue.",
+			"background_color": "#0000AA",
+			"long_description": "Play the Infocom classic text adventure and find your way to the end of the maze. ZORK is a game of adventure, danger, and low cunning. In it you will explore some of the most amazing territory ever seen by mortals. No workspace should be without one!"
+	},
+	"features": {
+			"app_home": {
+					"home_tab_enabled": true,
+					"messages_tab_enabled": true,
+					"messages_tab_read_only_enabled": false
+			},
+			"bot_user": {
+					"display_name": "zork",
+					"always_online": true
+			},
+			"slash_commands": [
+					{
+							"command": "/ping",
+							"url": "https://35c6-14-97-7-110.ngrok-free.app/slack/events",
+							"description": "You are standing in an open field west of a white house, with a boarded front door. There is a small mailbox here.",
+							"usage_hint": "/zork open mailbox",
+							"should_escape": false
+					}
+			]
+	},
+	"oauth_config": {
+			"redirect_urls": [
+					"https://35c6-14-97-7-110.ngrok-free.app/slack/oauth_redirect"
+			],
+			"scopes": {
+					"user": [
+							"admin.conversations:write",
+							"identity.basic"
+					],
+					"bot": [
+							"commands",
+							"chat:write",
+							"chat:write.public"
+					]
+			}
+	},
+	"settings": {
+			"event_subscriptions": {
+					"request_url": "https://35c6-14-97-7-110.ngrok-free.app/slack/events",
+					"bot_events": [
+							"app_home_opened"
+					]
+			},
+			"interactivity": {
+					"is_enabled": true,
+					"request_url": "https://35c6-14-97-7-110.ngrok-free.app/slack/events"
+			},
+			"org_deploy_enabled": false,
+			"socket_mode_enabled": false,
+			"token_rotation_enabled": false
+	}
+}

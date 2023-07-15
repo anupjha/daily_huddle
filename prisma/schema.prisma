@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// npx prisma migrate dev --name "init"
+//npm install @prisma/client
+//npx prisma db push
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Installation {
+  id                  Int      @id @default(autoincrement())
+  teamId              String   @unique
+  teamName            String //Workspace
+  enterpriseId        String?
+  enterpriseName      String?
+  userId              String
+  userToken           String?
+  userScopes          String?
+  botId               String
+  botToken            String
+  botUserId           String
+  botScopes           String
+  appId               String
+  authVersion         String
+  isEnterpriseInstall Boolean  @default(false)
+  tokenType           String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model Setting {
+  id          Int      @id @default(autoincrement())
+  name        String
+  current     String
+  intervals   String
+  team        String
+  users       String
+  channel     String
+  author      String
+  message     String
+  lastMessage String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Task {
+  id                 Int       @id @default(autoincrement())
+  title              String
+  status             Status
+  dueDate            DateTime  @default(now())
+  scheduledMessageId String?
+  creator            String
+  currentAssignee    String
+  taskSource         TaskType?
+  taskSourceId       String?
+  taskSourceUrl      String?
+  completed          Boolean   @default(false)
+  startDate          DateTime?
+  endDate            DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model User {
+  id               Int      @id @default(autoincrement())
+  slackUserId      String   @unique
+  slackWorkspaceId String   @unique
+  email            String?
+  firstName        String?
+  lastName         String?
+  provider         String?  @default("GOOGLE")
+  role             Role     @default(ADMIN)
+  createdAt        DateTime @default(now())
+}
+
+enum TaskType {
+  ADHOC
+  JIRA
+  CALENDAR
+}
+
+enum Status {
+  TODO
+  DOING
+  DONE
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}

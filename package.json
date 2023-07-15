@@ -1,0 +1,38 @@
+{
+  "name": "daily-huddle-slack-app",
+  "version": "1.0.0",
+  "description": "A meter based task management slack app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint --ext .js ."
+  },
+  "author": "Anup Jha",
+  "license": "MIT",
+  "keywords": [
+    "slack",
+    "bolt",
+    "slackapi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anupjha/"
+  },
+  "bugs": {
+    "url": "https://github.com/anupjha"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.16.2",
+    "@slack/bolt": "^3.11.1",
+    "dayjs": "^1.11.9",
+    "dotenv": "^10.0.0",
+    "pluralize": "^8.0.0",
+    "slack-block-builder": "^2.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^3.0.0",
+    "prisma": "^4.16.2"
+  }
+}
